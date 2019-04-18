@@ -4,8 +4,18 @@ from PyInstaller import *
 
 #Runs the program
 def main():
-    for i in range(0 , 3):
-        runTrial()
+    numTrials = 5000
+    
+    trialList = []
+    totalTrials = 0
+    for i in range(0 , numTrials):
+        trialList.append(runCalculation())
+    for i in range (0 , numTrials):
+        print(trialList[i])
+        totalTrials += trialList[i].numPoints
+    print()
+    print("Total Trials: " + str(totalTrials))
+    print ("Average Number of Trials: " + str(totalTrials / numTrials))
 
 #Generates a coordinate values for a given x
 def calcCoordinates(x , dimensions):
@@ -19,13 +29,13 @@ def calcCoordinates(x , dimensions):
 def getDistFromZero(point):
     return math.pow(point[0] , 2) + math.pow(point[1] , 2)
 
-def runTrial():
+def runCalculation():
     trials = 0
     currentCoordinates = [0] * 2
     #radius = input("Enter radius of the circle: \n")
     radius = 2
     currentDistance = 0
-    print ("radius: " + str(radius))
+    #print ("radius: " + str(radius))
     while currentDistance < radius:
         xVal = random.uniform(-1 , 1)
         thePoint = calcCoordinates(xVal , 2)
@@ -33,10 +43,10 @@ def runTrial():
             currentCoordinates[j] += thePoint[j]
         trials += 1
         currentDistance = getDistFromZero(currentCoordinates)
-        print ("Point: " + str(thePoint))
-        print ("Current Coordinates: " + str(currentCoordinates))
-        print ("Current Distance: " + str(currentDistance) + "\n")
-    print ("Trials: " + str(trials) + "\n")
+        #print ("Point: " + str(thePoint))
+        #print ("Current Coordinates: " + str(currentCoordinates))
+        #print ("Current Distance: " + str(currentDistance) + "\n")
+    #print ("Trials: " + str(trials) + "\n")
     outputTrial = trial(currentCoordinates ,trials )
     return outputTrial
 
@@ -44,5 +54,8 @@ class trial():
     def __init__(self, coordinates , numPoints):
         self.coordinates = coordinates
         self.numPoints = numPoints
+
+    def __str__(self):
+        return str(str(self.coordinates) + " | " + str(self.numPoints))
 
 main()
