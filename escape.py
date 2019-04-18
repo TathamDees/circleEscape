@@ -3,12 +3,12 @@ import math
 
 #Runs the program
 def main():
-    numTrials = 5000
-    
+    numTrials = 1000
+    circleRadius = 15
     trialList = []
     totalTrials = 0
     for i in range(0 , numTrials):
-        trialList.append(runCalculation())
+        trialList.append(runCalculation(circleRadius))
     for i in range (0 , numTrials):
         print(trialList[i])
         totalTrials += trialList[i].numPoints
@@ -26,13 +26,13 @@ def calcCoordinates(x , dimensions):
     return coordinates
 
 def getDistFromZero(point):
-    return math.pow(point[0] , 2) + math.pow(point[1] , 2)
+    return math.sqrt(math.pow(point[0] , 2) + math.pow(point[1] , 2))
 
-def runCalculation():
+def runCalculation(circleRadius):
     trials = 0
     currentCoordinates = [0] * 2
     #radius = input("Enter radius of the circle: \n")
-    radius = 2
+    radius = circleRadius
     currentDistance = 0
     #print ("radius: " + str(radius))
     while currentDistance < radius:
