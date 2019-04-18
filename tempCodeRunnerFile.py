@@ -1,6 +1,5 @@
 import random
 import math
-from PyInstaller import *
 
 #Runs the program
 def main():
@@ -57,5 +56,8 @@ class trial():
 
     def __str__(self):
         return str(str(self.coordinates) + " | " + str(self.numPoints))
+
+def makeCSV():
+    print("j")
 
 main()
