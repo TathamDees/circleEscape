@@ -5,7 +5,6 @@ from PyInstaller import *
 #Runs the program
 def main():
     for i in range(0 , 3):
-        
         runTrial()
 
 #Generates a coordinate values for a given x
@@ -24,7 +23,6 @@ def runTrial():
     trials = 0
     currentCoordinates = [0] * 2
     #radius = input("Enter radius of the circle: \n")
-    
     radius = 2
     currentDistance = 0
     print ("radius: " + str(radius))
@@ -33,15 +31,18 @@ def runTrial():
         thePoint = calcCoordinates(xVal , 2)
         for j in range (0 , 2):
             currentCoordinates[j] += thePoint[j]
-        trials += 5
+        trials += 1
         currentDistance = getDistFromZero(currentCoordinates)
         print ("Point: " + str(thePoint))
         print ("Current Coordinates: " + str(currentCoordinates))
         print ("Current Distance: " + str(currentDistance) + "\n")
-    print ("Trials: " + str(trials))
-    return currentCoordinates , trials
+    print ("Trials: " + str(trials) + "\n")
+    outputTrial = trial(currentCoordinates ,trials )
+    return outputTrial
 
-#def trial:
-#    current
+class trial():
+    def __init__(self, coordinates , numPoints):
+        self.coordinates = coordinates
+        self.numPoints = numPoints
 
 main()
